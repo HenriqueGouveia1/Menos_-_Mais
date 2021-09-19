@@ -1,5 +1,4 @@
 import React, { Component, useState } from 'react';
-import { render } from 'react-dom';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity } from 'react-native';
 import Header from './Header'
 
@@ -13,7 +12,7 @@ export default class App extends Component {
         {
           id: '1',
           title: 'Como aplicar a organização financeira?',
-          desc:"Saiba o que está acontecendo com suas finanças, invista na sua educação financeira, crie metas possíveis,veja o que pode ser cortado.",
+          desc: "Saiba o que está acontecendo com suas finanças, invista na sua educação financeira, crie metas possíveis,veja o que pode ser cortado.",
           infoAd: 'aaaaaaaaaaaaaa'
         },
         {
@@ -71,27 +70,29 @@ export default class App extends Component {
   onPress = () => {
     <View>{infoAd}</View>
     this.setState({
-      expandir: {infoAd}
+      expandir: { infoAd }
     });
   };
 
   render() {
-    
-    const { expandir } = this.state;
-    
+
+
+
     return (
-      
-      <SafeAreaView style={styles.container} ackgroundColor='#359253'>
-        <StatusBar backgroundColor='#359253'/>
+
+      <SafeAreaView style={styles.container}>
+
         <Header />
+        <Text style={styles.obs}>Obs: Verão de testes, algumas coisas como botão "Aperte para mais infos" ainda não funciona...</Text>
         <FlatList
           data={this.state.Data}
+
           renderItem={({ item }) =>
 
             <View style={styles.otem}>
               <Text style={styles.title}>{item.title}</Text>
               <Text>{item.desc}</Text>
-              <TouchableOpacity onPress={this.onPress}>  
+              <TouchableOpacity >
                 <Text style={styles.butao}>Aperte para mais infos</Text>
               </TouchableOpacity>
             </View>
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#82BE96',
-    marginTop: StatusBar.currentHeight || 0,
+    // marginTop: StatusBar.currentHeight || 0,
 
 
   },
@@ -136,6 +137,11 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#359253'
+  },
+  obs:{
+    opacity: .6,
+    color: 'black',
+ 
   }
 
 });
